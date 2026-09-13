@@ -1,0 +1,40 @@
+# Xcode
+## User settings
+xcuserdata/
+*.xcuserdatad
+*.xcuserstate
+project.xcworkspace/xcuserdata/
+project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+
+## Build generated
+build/
+DerivedData/
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+
+## Signing / Certificates / Provisioning
+*.cer
+*.cert
+*.p12
+*.mobileprovision
+*.key
+
+## Swift Package Manager
+.build/
+Packages/
+
+## macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+## Backups & Temporary files
+*.swp
+*.lock
+*~
+*.backup
+*.orig
