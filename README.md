@@ -43,9 +43,7 @@ Open the app on both devices, assign roles (Dom & Sub), and pair!
 
 If you enjoy the project and want to see it go further, consider leaving a donation!
 
-🎯 **Goal: \$100**  
-Once the goal is reached, I will use the funds to cover the Apple Developer Program fee to attempt publishing virtualeash to the **App Store**. If Apple rejects it due to policy restrictions, I will publish it to **[AltStore PAL](https://altstore.io/pal/)**.
-
+If i manage to reach $99 in donations, i will get the developer account, and try posting it on the app store, or in case that wont work out, altstore pal.
 👉 **[Donate here](https://ko-fi.com/yariericsson)**
 
 ---
