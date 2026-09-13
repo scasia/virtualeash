@@ -26,7 +26,7 @@
 ## 🚀 Getting Started
 
 ### 1. Download the `.ipa`
-Grab the latest `.ipa` file from the **[Releases](https://github.com/your-username/virtualeash/releases)** page.
+Grab the latest `.ipa` file from the **[Releases](https://github.com/scasia/virtualeash/releases)** page.
 
 ### 2. Sideload onto your devices
 Sideload the `.ipa` onto both iPhones using your preferred sideloading tool:
