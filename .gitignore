@@ -38,3 +38,8 @@ Packages/
 *~
 *.backup
 *.orig
+
+## IPA Output
+build_output/
+*.ipa
+*.xcarchive
