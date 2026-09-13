@@ -32,7 +32,7 @@ Grab the latest `.ipa` file from the **[Releases](https://github.com/scasia/virt
 Sideload the `.ipa` onto both iPhones using your preferred sideloading tool:
 - **[Sideloadly](https://sideloadly.io/)** (macOS & Windows)
 - **[AltStore](https://altstore.io/)**
-- **[Plume](https://github.com/CLARATION/Impactor)** (formerly Feather / Plume Impactor)
+- **[Plume](https://github.com/CLARATION/Impactor)** 
 
 ### 3. Connect them together!
 Open the app on both devices, assign roles (Dom & Sub), and pair!
