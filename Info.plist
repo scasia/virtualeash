@@ -7,6 +7,12 @@
 		<string>_virtual-leash._tcp</string>
 		<string>_virtual-leash._udp</string>
 	</array>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Virtual Leash uses the local network to discover, pair, and communicate with nearby devices.</string>
+	<key>NSNearbyInteractionUsageDescription</key>
+	<string>Virtual Leash uses Ultra-Wideband (UWB) precision ranging to measure the distance and direction between paired devices.</string>
+	<key>NSNearbyInteractionAllowOnceUsageDescription</key>
+	<string>Virtual Leash uses Ultra-Wideband (UWB) precision ranging to measure the distance and direction between paired devices.</string>
 	<key>NSSupportsLiveActivities</key>
 	<true/>
 	<key>UIBackgroundModes</key>
