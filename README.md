@@ -1,6 +1,8 @@
-# virtualeash 🐾
-
-> A leash for your iPhone!
+<div align="center">
+  <img src="icon.png" width="128" height="128" style="border-radius: 28px;" alt="virtualeash icon" />
+  <h1>virtualeash 🐾</h1>
+  <p><strong>A leash for your iPhone!</strong></p>
+</div>
 
 ---
 
