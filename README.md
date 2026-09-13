@@ -17,7 +17,7 @@
 
 ## 📱 Requirements
 
-- **iOS 16.0+** (iOS 17+ recommended for Dynamic Island animations)
+- **iOS 16.2+** (required for ActivityKit Live Activities & NearbyInteraction UWB; iOS 17+ recommended for Dynamic Island animations)
 - **Two UWB-equipped iOS devices**:
   - iPhone 11 or later (excluding iPhone SE 2nd/3rd gen)
 

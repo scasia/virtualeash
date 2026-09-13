@@ -323,15 +323,13 @@ struct ContentView: View {
                                 .clipShape(Circle())
                         }
                     } else if viewModel.selectedRole == .sub {
-                        if viewModel.connectedPeerName == nil {
-                            Button("Unpair") {
-                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                                withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
-                                    viewModel.unpair()
-                                }
+                        Button("Exit") {
+                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                            withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
+                                viewModel.unpair()
                             }
-                            .buttonStyle(TactileGlassActionStyle(cornerRadius: 10, isDestructive: false))
                         }
+                        .buttonStyle(TactileGlassActionStyle(cornerRadius: 10, isDestructive: false))
                     }
                 }
             }
@@ -341,12 +339,12 @@ struct ContentView: View {
             .sheet(isPresented: $showSubSettings) {
                 SubSettingsSheet(viewModel: viewModel)
             }
-            .onChange(of: viewModel.alarmSettings.allowSubToViewSettings) { _, allowed in
+            .onChange(of: viewModel.alarmSettings.allowSubToViewSettings) { allowed in
                 if !allowed {
                     showSubSettings = false
                 }
             }
-            .onChange(of: viewModel.connectedPeerName) { _, peer in
+            .onChange(of: viewModel.connectedPeerName) { peer in
                 if peer == nil {
                     showSubSettings = false
                 }
@@ -454,9 +452,17 @@ struct ContentView: View {
             )
             
             if viewModel.connectedPeerName == nil {
-                Text("Disconnected from Dom")
-                    .font(.subheadline)
-                    .foregroundColor(.white.opacity(0.8))
+                HStack(spacing: 8) {
+                    ProgressView()
+                        .controlSize(.mini)
+                        .tint(.white)
+                    Text("Searching for Dom...")
+                        .font(.subheadline)
+                        .foregroundColor(.white.opacity(0.85))
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 8)
+                .liquidGlass(cornerRadius: 14)
             }
             
             if viewModel.alarmSettings.allowSubToViewSettings && viewModel.connectedPeerName != nil {
@@ -481,19 +487,21 @@ struct ContentView: View {
             Spacer()
             
             if viewModel.connectedPeerName == nil {
-                Button(role: .destructive) {
-                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                    withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
-                        viewModel.disconnect()
+                VStack(spacing: 12) {
+                    Button {
+                        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                        withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
+                            viewModel.unpair()
+                        }
+                    } label: {
+                        Text("Cancel & Choose Role")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 50)
                     }
-                } label: {
-                    Text("Disconnect")
-                        .font(.headline)
-                        .foregroundColor(.red)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 50)
+                    .buttonStyle(TactileGlassActionStyle(cornerRadius: 14, isDestructive: false))
                 }
-                .buttonStyle(TactileGlassActionStyle(cornerRadius: 14, isDestructive: true))
             }
         }
     }
@@ -861,12 +869,12 @@ struct SubSettingsSheet: View {
                     .foregroundColor(.white)
                 }
             }
-            .onChange(of: viewModel.alarmSettings.allowSubToViewSettings) { _, allowed in
+            .onChange(of: viewModel.alarmSettings.allowSubToViewSettings) { allowed in
                 if !allowed {
                     dismiss()
                 }
             }
-            .onChange(of: viewModel.connectedPeerName) { _, peer in
+            .onChange(of: viewModel.connectedPeerName) { peer in
                 if peer == nil {
                     dismiss()
                 }

@@ -97,10 +97,15 @@ final class MultipeerSessionManager: NSObject, ObservableObject {
         defaults.removeObject(forKey: kIsAutoPairEnabled)
         defaults.removeObject(forKey: kSavedPeerName)
         defaults.removeObject(forKey: kSavedRole)
-        self.isAutoPairEnabled = false
-        self.savedPeerName = nil
-        self.role = nil
-        self.connectionState = .idle
+        defaults.synchronize()
+        
+        DispatchQueue.main.async {
+            self.isAutoPairEnabled = false
+            self.savedPeerName = nil
+            self.role = nil
+            self.connectionState = .idle
+            self.objectWillChange.send()
+        }
     }
     
     // MARK: - Lifecycle
@@ -241,6 +246,16 @@ extension MultipeerSessionManager: MCNearbyServiceAdvertiserDelegate {
 extension MultipeerSessionManager: MCNearbyServiceBrowserDelegate {
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         guard let currentSession = self.session, self.connectedPeer == nil else { return }
+        
+        // Ensure the discovered peer is actually advertising as a Dom host
+        if let peerRole = info?["role"], peerRole != "dom" {
+            return
+        }
+        
+        // If a specific target peer was expected by the Dom, verify we are that target
+        if let targetPeer = info?["targetPeer"], targetPeer != myPeerID.displayName {
+            return
+        }
         
         if let saved = savedPeerName {
             if peerID.displayName == saved {
